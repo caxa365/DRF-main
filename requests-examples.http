@@ -1,0 +1,51 @@
+#token1 = 87ed596144b60dc63d70c924fac0f3b068ff5339
+#token2 = 538faeda4d7a28ba3d267b419d4928747ca5c823
+
+# примеры API-запросов
+
+@baseUrl = http://localhost:8000/api
+
+# получение объявлений
+GET {{baseUrl}}/adv/
+Content-Type: application/json
+
+###
+
+# создание объявления
+POST {{baseUrl}}/adv/
+Content-Type: application/json
+Authorization: Token 87ed596144b60dc63d70c924fac0f3b068ff5339
+
+{
+  "title": "Шкаф IKEA",
+  "description": "Срочно"
+}
+
+###
+
+# удаление объявления
+DELETE {{baseUrl}}/adv/22/
+Content-Type: application/json
+Authorization: Token 538faeda4d7a28ba3d267b419d4928747ca5c823
+###
+
+# попытка поменять объявление
+PATCH {{baseUrl}}/adv/20/
+Content-Type: application/json
+Authorization: Token 87ed596144b60dc63d70c924fac0f3b068ff5339
+
+{
+  "status": "CLOSED"
+}
+
+###
+
+# фильтрация по создателю
+GET {{baseUrl}}/adv/?creator=3
+Content-Type: application/json
+
+###
+
+# фильтрация по дате
+GET {{baseUrl}}/adv/?created_at_before=2020-10-01
+Content-Type: application/json
